@@ -1,7 +1,9 @@
+import { buildMessage } from './buildMessage'
 import { getLengthArgument } from './getLengthArgument'
 import { passwordService } from './instances'
+import { ILengthResponse } from './types'
 
-const length = getLengthArgument(process.argv)
+const lengthResponse: ILengthResponse = getLengthArgument(process.argv)
 
-console.log(`Your password with length: ${length} is \n`)
-console.log(passwordService.generate(length))
+console.log(buildMessage(lengthResponse))
+console.log(passwordService.generate(lengthResponse.length))

@@ -1,9 +1,20 @@
 import { DEFAULT_LENGTH } from './constants'
+import { ILengthResponse } from './types'
 
-export const getLengthArgument = (args: string[]): number => {
-    if (args.length === 0) {
-        return DEFAULT_LENGTH
+const isLengthPresentAsArgument = (args: string[]) => args.find(x => x.indexOf('length=') !== -1) !== undefined
+
+export const getLengthArgument = (args: string[]): ILengthResponse => {
+    const response: ILengthResponse = {
+        length: DEFAULT_LENGTH,
+        isDefault: !isLengthPresentAsArgument(args)
     }
     
-    return parseInt(args.slice(2)[0].split('=')[1])
+    if (response.isDefault) {
+        response.length = DEFAULT_LENGTH
+        return response
+    }
+
+    response.length = parseInt(args.slice(2)[0].split('=')[1])
+    
+    return response
 }
