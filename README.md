@@ -4,7 +4,8 @@ Password generator written in Typescript
 ## Usage
 1. Install node modules (npm install)
 2. npm start length=number
-Example usage:
+
+### Example
 npm start length=35
 
 Example output:
