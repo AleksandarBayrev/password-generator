@@ -1,0 +1,35 @@
+{
+  "name": "password-generator",
+  "version": "1.0.0",
+  "description": "Password generator written in Typescript",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "npm run build && node ./build/index.js",
+    "build": "npm run clean-build && tsc",
+    "clean-build": "shx rm -rf ./build",
+    "test": "jest",
+    "clean-test-coverage": "shx rm -rf ./coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AleksandarBayrev/password-generator.git"
+  },
+  "keywords": [
+    "password",
+    "generator",
+    "typescript"
+  ],
+  "author": "Aleksandar Bayrev",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/AleksandarBayrev/password-generator/issues"
+  },
+  "homepage": "https://github.com/AleksandarBayrev/password-generator#readme",
+  "devDependencies": {
+    "@types/jest": "~26.0.23",
+    "jest-cli": "~27.0.6",
+    "shx": "^0.3.3",
+    "ts-jest": "~27.0.3",
+    "typescript": "~4.3.5"
+  }
+}
