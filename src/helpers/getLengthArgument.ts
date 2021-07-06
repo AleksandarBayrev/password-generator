@@ -1,5 +1,5 @@
-import { DEFAULT_LENGTH } from './constants'
-import { ILengthResponse } from './types'
+import { DEFAULT_LENGTH } from '../constants'
+import { ILengthResponse } from '../types'
 
 const isLengthPresentAsArgument = (args: string[]) => args.find(x => x.indexOf('length=') !== -1) !== undefined
 

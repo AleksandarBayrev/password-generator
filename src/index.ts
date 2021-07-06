@@ -1,6 +1,4 @@
-import { buildMessage } from './buildMessage'
-import { getLengthArgument } from './getLengthArgument'
-import { passwordService } from './instances'
+import { buildMessage, getLengthArgument, passwordService } from './helpers'
 import { ILengthResponse } from './types'
 
 const lengthResponse: ILengthResponse = getLengthArgument(process.argv)
