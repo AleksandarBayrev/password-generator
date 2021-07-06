@@ -1,1 +1,5 @@
-export const DEFAULT_LENGTH = 10
+import { IConstants } from '../types'
+
+export const constants: IConstants = {
+    DEFAULT_LENGTH: 10
+}

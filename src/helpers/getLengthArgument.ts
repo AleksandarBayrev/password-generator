@@ -1,20 +1,26 @@
-import { DEFAULT_LENGTH } from '../constants'
-import { ILengthResponse } from '../types'
+import { IConstants, ILengthResponse } from '../types'
 
-const isLengthPresentAsArgument = (args: string[]) => args.find(x => x.indexOf('length=') !== -1) !== undefined
+const isLengthPresentAsArgument = (args: string[]): boolean => processArguments(args) !== undefined
 
-export const getLengthArgument = (args: string[]): ILengthResponse => {
+const processArguments = (args: string[]): string | undefined => args.find(x => x.indexOf('length=') !== -1)
+
+const getArgument = (argument: string): number => parseInt(argument.split('=')[1])
+
+const getIsDefault = (args: string[], lengthArgument: string | undefined, constants: IConstants) => isLengthPresentAsArgument(args) && lengthArgument !== undefined && getArgument(lengthArgument) === constants.DEFAULT_LENGTH
+
+export const getLengthArgument = (args: string[], constants: IConstants): ILengthResponse => {
+    const lengthArgument = processArguments(args)
     const response: ILengthResponse = {
-        length: DEFAULT_LENGTH,
-        isDefault: !isLengthPresentAsArgument(args)
+        length: constants.DEFAULT_LENGTH,
+        isDefault: getIsDefault(args, lengthArgument, constants)
     }
-    
-    if (response.isDefault) {
-        response.length = DEFAULT_LENGTH
+
+    if (response.isDefault || lengthArgument === undefined) {
+        response.length = constants.DEFAULT_LENGTH
         return response
     }
 
-    response.length = parseInt(args.slice(2)[0].split('=')[1])
+    response.length = getArgument(lengthArgument)
     
     return response
 }
