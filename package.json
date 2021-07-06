@@ -8,6 +8,7 @@
     "build": "npm run clean-build && tsc",
     "clean-build": "shx rm -rf ./build",
     "test": "jest",
+    "test-coverage": "jest --coverage",
     "clean-test-coverage": "shx rm -rf ./coverage"
   },
   "repository": {
