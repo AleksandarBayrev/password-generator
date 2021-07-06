@@ -13,11 +13,11 @@ export class PasswordService implements IGenerator {
 
     private buildPassword(length: number) {
         const possibleSymbols = this.symbolGenerator.generateSymbols('A'.charCodeAt(0), '~'.charCodeAt(0))
-        let password = ''
+        const password: string[] = []
         for (let i = 0; i < length; i++) {
-            password += possibleSymbols[this.getRandomIntInclusive(0, possibleSymbols.length - 1)]
+            password.push(possibleSymbols[this.getRandomIntInclusive(0, possibleSymbols.length - 1)])
         }
-        return password
+        return password.join('')
     }
     private getRandomIntInclusive(min: number, max: number) {
         min = Math.ceil(min);
