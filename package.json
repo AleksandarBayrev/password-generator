@@ -4,7 +4,8 @@
   "description": "Password generator written in Typescript",
   "main": "build/index.js",
   "scripts": {
-    "start": "npm run build && node ./build/index.js",
+    "start": "node ./build/index.js",
+    "start-rebuild": "npm run build && npm start",
     "build": "npm run clean-build && tsc",
     "clean-build": "shx rm -rf ./build",
     "test": "jest",
